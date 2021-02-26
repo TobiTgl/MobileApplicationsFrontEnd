@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Button } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const SinglePosting = (props) => {
@@ -9,11 +9,22 @@ const SinglePosting = (props) => {
       <View style={ styles.posting }>
         <Text style={ styles.title}>{ props.name}</Text>
         <Text style={ styles.username}>{ props.sellerUsername}</Text>
+        <Text style={ styles.price}>{ props.price} €</Text>
+        <Text >{ props.id}</Text>
         
       </View>
       <View>
-        <Text style={ styles.price}>{ props.price} €</Text>
+        
       </View>
+      <View >
+         <View style={ styles.button}>
+            <Button color='darkred' title='details'></Button>
+          </View>
+          <View style={ styles.button}>
+            <Button  color='darkred' title='delete' onPress={()=>props.onDeleteClick(props.id)}></Button>
+          </View>
+      </View>
+      
       
     </View>
   )
@@ -52,6 +63,15 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18
 
+  },
+  button: {
+    
+    paddingBottom: 5,
+    paddingLeft: 60,
+    borderRadius: 10,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'black'
   }
 })
 
